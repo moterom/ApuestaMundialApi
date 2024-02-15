@@ -1,0 +1,17 @@
+<div class="row justify-content-center" ng-init="getAllEquipos()">
+	<h5 class="col-12" style="text-align: center;">Resultado del partido</h5>
+	<h6 class="col-12" style="margin-top: 5px; text-align: center;">Equipo A</h6>
+	<select class="form-control col-6" id="equipoASelect" ng-options="equipo as equipo.id_equipo+' - '+equipo.nombre for equipo in equipos" ng-model="equipoA" ng-change="clear()">
+	</select>
+	<h6 class="col-12" style="margin-top: 5px; text-align: center;">Equipo B</h6>
+	<select class="form-control col-6" id="equipoBselect" ng-options="equipo as equipo.id_equipo+' - '+equipo.nombre for equipo in equipos" ng-model="equipoB" ng-change="clear()">
+	</select>
+	<h6 class="col-12" style="margin-top: 5px; text-align: center;">Fecha</h6>
+	<input class="form-control col-6" type="date"  ng-model="fechaPartido" ng-change="clear()">
+</div>
+<div class="row justify-content-center" style="margin-top: 10px;">
+	<button type="submit" class="btn btn-primary col-1" style="cursor:pointer" ng-click="setPartido()">Aceptar</button>
+</div>
+<div class="row justify-content-center" style="margin-top: 10px;">
+	<h6 class="col-6" style="text-align: center;">{{guardado}}</h6>
+</div>

@@ -1,0 +1,70 @@
+<div class="row" style="position: absolute; left: 30px; top: 50px;">
+	<!-- Insertar Modal -->
+        <div class="modal fade" id="ganadorModal" role="dialog" style="background-image: url('img/fondo2.jpg')">
+    	<div class="modal-dialog">
+	      	<!-- Modal content-->
+	      	<div class="modal-content">
+		        <div class="modal-header">
+		          <h4 class="modal-title">Ganador</h4>
+		        </div>
+		        <div class="modal-body">
+		        	<div class="row justify-content-center">
+		        		<h6 style="text-align: center;">El ganador del premio ({{premio}}) es {{ganador.nombre}} ({{ganador.cedula}}) </h6>
+		          	</div>
+		        </div>
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-default" data-dismiss="modal" style="cursor:pointer">Cerrar</button>
+		        </div>
+	      	</div>
+    	</div>
+  	</div>
+	
+</div> 
+
+<div class="row justify-content-center" ng-init="getAllPartidos()" style="margin-top: 20px;">
+	<h5 class="col-12" style="text-align: center;">Resultado del partido</h5>
+	<form class="col-6">
+	  <div class="form-group ">
+	    <label for="exampleFormControlSelect1">Partido</label>
+	   	<select class="form-control" id="partidoSelect" ng-options="partido as partido.equipo_a+' - '+partido.equipo_b+' - '+partido.fecha for partido in partidosResult" ng-model="partidoSelected">
+		</select>
+	  </div>
+	  <div class="form-group row justify-content-center" style="">
+	  	<label for="EquipoA" class="col-1">{{partidoSelected.equipo_a}}</label>
+	  	<img src="img/bandera/{{partidoSelected.equipo_a|lowercase}}.jpg" class="rounded float-right col-2" style="width: 100px;">
+	  	<input type="number" class="form-control col-2" id="SmarcadorA" placeholder="0" ng-model="SmarcadorA" style="margin-right: 20px">
+	  	<input type="number" class="form-control col-2" id="SmarcadorB"  ng-model="SmarcadorB" placeholder="0">
+	  	<img src="img/bandera/{{partidoSelected.equipo_b|lowercase}}.jpg" class="rounded float-right col-2" style="width: 100px;">
+	  	<label for="EquipoB" class="col-1">{{partidoSelected.equipo_b}}</label>
+	  </div>
+	  <div class="row justify-content-center">
+	  	<button type="submit" class="btn btn-primary col-2" style="cursor:pointer" ng-click="updateMarcador()">Aceptar</button>
+	  </div>
+	</form>
+</div>	
+<div class="row justify-content-center" id="NoAcertados" style="margin-top: 20px;">
+	<h3 class="col-12" style="text-align: center;">{{NoAcertados}}</h3>
+</div>
+<div class="row justify-content-center" style="margin-top: 20px;">
+	<h5 class="col-12" style="text-align: center;">El ganador de: {{premio}}</h5>
+	<button type="button" class="btn btn-primary btn-sm active col-2" style="cursor:pointer; margin-top: 15px;" role="button"  style="cursor:pointer" data-toggle="modal" data-target="#ganadorModal" ng-click="getGanador()">Elegir</button>
+</div>
+
+<div class="row justify-content-center" style="margin-top: 20px;">
+	<h5 class="col-12" style="text-align: center;">Lista de acertados</h5>
+	<table class="table table-hover table-responsive col-5">
+		<thead class="thead-inverse" style="height: 10px;">
+	    	<tr>
+	            <th>C&eacute;dula</th>
+	      		<th>Nombre</th>
+	    	</tr>
+	  	</thead>
+	  	<tbody>
+	    	<tr ng-repeat="acertado in Acertados">
+	    		<td>{{acertado.cedula}}</td>
+	    		<td>{{acertado.nombre}}</td>
+		    </tr>
+	  	</tbody>
+	</table>
+</div>
+

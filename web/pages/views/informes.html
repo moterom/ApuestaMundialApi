@@ -1,0 +1,92 @@
+<div class="row justify-content-center" ng-init="getGanadores()">
+	<h5 class="col-12" style="text-align: center;">Informes</h5>
+	<h6 class="col-12" style="text-align: center; margin-top: 10px;">Lista de ganadores</h6>
+	<table class="table table-hover table-responsive col-6">
+		<thead class="thead-inverse" style="height: 10px;">
+	    	<tr>
+	            <th>C&eacute;dula</th>
+	      		<th>Nombre</th>
+	    	</tr>
+	  	</thead>
+	  	<tbody>
+	    	<tr ng-repeat="ganador in ganadores">
+	    		<td>{{ganador.cedula}}</td>
+	    		<td>{{ganador.nombre}}</td>
+		    </tr>
+	  	</tbody>
+	</table>
+</div>
+
+<div class="row justify-content-center" ng-init="getGanadores()">
+	<h6 class="col-12" style="text-align: center; margin-top: 10px;">Acertados por partido</h6>
+</div>
+<div class="row justify-content-center" ng-init="getAllPartidos()">
+	<h6 class="col-1" style="text-align: center; margin-top: 10px;">Partidos</h6>
+	<select class="form-control col-5" id="partidoSelect" ng-options="partido as partido.equipo_a+' - '+partido.equipo_b+' - '+partido.fecha for partido in partidosResult" ng-model="partidoSelected" style="margin-top: 10px;" ng-change="getAllAcertados()">
+		</select>
+</div>
+
+<div class="row justify-content-center" style="margin-top: 10px;">
+	<table class="table table-hover table-responsive col-6">
+		<thead class="thead-inverse" style="height: 10px;">
+	    	<tr>
+	            <th>C&eacute;dula</th>
+	      		<th>Nombre</th>
+	    	</tr>
+	  	</thead>
+	  	<tbody>
+	    	<tr ng-repeat="acertado in Acertados">
+	    		<td>{{acertado.cedula}}</td>
+	    		<td>{{acertado.nombre}}</td>
+		    </tr>
+	  	</tbody>
+	</table>
+</div>
+
+<div class="row justify-content-center" >
+	<h6 class="col-12" style="text-align: center; margin-top: 10px;">Lista de apuesta por partido</h6>
+	<h6 class="col-1" style="text-align: center; margin-top: 10px;">Partidos</h6>
+	<select class="form-control col-5" id="partidoSelect" ng-options="partido as partido.equipo_a+' - '+partido.equipo_b+' - '+partido.fecha for partido in partidosResult" ng-model="partidoSelectedApuesta" style="margin-top: 10px;" ng-change="getAllApuestasXPartido()">
+		</select>
+</div>
+
+<div class="row justify-content-center">
+	<table class="table table-hover table-responsive col-6">
+		<thead class="thead-inverse" style="height: 10px;">
+	    	<tr>
+	            <th>C&eacute;dula</th>
+	      		<th>Nombre</th>
+	      		<th></th>
+	      		<th></th>
+	    	</tr>
+	  	</thead>
+	  	<tbody>
+	    	<tr ng-repeat="apuesta in Apuestas">
+	    		<td>{{apuesta.cedula}}</td>
+	    		<td>{{apuesta.nombre}}</td>
+	    		<td>{{partidoSelectedApuesta.equipo_a}}: {{apuesta.marcador_a}}</td>
+	    		<td>{{partidoSelectedApuesta.equipo_b}}: {{apuesta.marcador_b}}</td>
+		    </tr>
+	  	</tbody>
+	</table>
+</div>
+
+<div class="row justify-content-center" ng-init="getAllPersonas()">
+	<h6 class="col-12" style="text-align: center; margin-top: 10px;">Participantes</h6>
+	<table class="table table-hover table-responsive col-6">
+		<thead class="thead-inverse" style="height: 10px;">
+	    	<tr>
+	            <th>C&eacute;dula</th>
+	      		<th>Nombre</th>
+	    	</tr>
+	  	</thead>
+	  	<tbody>
+	    	<tr ng-repeat="persona in personas">
+	    		<td>{{persona.cedula}}</td>
+	    		<td>{{persona.nombre}}</td>
+		    </tr>
+	  	</tbody>
+	</table>
+</div>
+
+

@@ -1,0 +1,33 @@
+<div class="row justify-content-center" ng-init="getAllPremios()">
+	<h5 class="col-12" style="text-align: center;">Nuevo premio</h5>
+	<form class="col-6">
+	  <div class="form-group">
+	    <label for="premio" >Premio</label>
+	    <input type="text" class="form-control " id="premio"  placeholder="premio" ng-model="premioSelected">
+	  </div>
+	  <div class="row justify-content-center">
+		  	<button type="submit" class="btn btn-primary col-2" ng-click="setApuestas()">Aceptar</button>
+	  </div>
+    </form>
+</div>
+<div class="row justify-content-center" style="margin-top: 25px;">
+	<h5 class="col-12" style="text-align: center">Asignar premio a partido</h5>
+	<form class="col-6">
+	  	<div class="form-group ">
+		    <label for="partidoSelect">Partido</label>
+		    <select class="form-control" id="partidoSelect" ng-options="partido as partido.equipo_a+' - '+partido.equipo_b+' - '+partido.fecha for partido in partidosResult" ng-model="partidoSelected" ng-change="clear()">
+		    </select>
+		</div>
+		<div class="form-group ">
+		    <label for="premioSelect">Premio</label>
+		    <select class="form-control" id="premioSelect" ng-options="premio as premio.nombre for premio in premiosResult" ng-model="premioSelectedSelect" ng-change="clear()">
+		    </select>
+		</div>
+		<div class="row justify-content-center">
+		  	<button type="submit" class="btn btn-primary col-2" ng-click="updatePremioXPartido()">Aceptar</button>
+	    </div>
+	</form>
+</div>
+<div class="row justify-content-center" style="margin-top: 10px;">
+	<h6 class="col-6" style="text-align: center;">{{guardado}}</h6>
+</div>
